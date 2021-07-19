@@ -1,5 +1,6 @@
 package com.revature.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.revature.dao.RequestDAO;
@@ -20,5 +21,33 @@ public class RequestServiceImpl implements RequestService{
 	public List<Request> getAllRequests(){
 		return rdao.getAllRequests();
 	}
+
+	@Override
+	public List<Request> getRequestByEmployeeId(int eid) {
+		List<Request> requests = rdao.getAllRequests();
+		List<Request> result = new ArrayList<Request>();
+		
+		for(Request r : requests) {
+			if(r.getSender().getId() == eid) {
+				result.add(r);
+			}
+		}
+		return result;
+	}
+
+	@Override
+	public List<Request> getRequestByReviewerId(int eid) {
+		List<Request> requests = rdao.getAllRequests();
+		List<Request> result = new ArrayList<Request>();
+		
+		for(Request r : requests) {
+			if(r.getReviewer().getId() == eid) {
+				result.add(r);
+			}
+		}
+		return result;
+	}
+	
+	
 	
 }

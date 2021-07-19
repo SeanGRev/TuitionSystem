@@ -46,5 +46,39 @@ public class RequestController {
 		}
 	};
 	
+	public Handler getEmployeeRequest = (ctx) -> {
+		String input = ctx.pathParam("id");
+		int eid;
+		try {
+			eid = Integer.parseInt(input);
+		} catch (NumberFormatException e) {
+			eid = -1;
+		}
+		
+		List<Request> req = rs.getRequestByEmployeeId(eid);
+		
+		if(req != null) {
+			ctx.result(gson.toJson(req));
+		} else {
+			ctx.result("[]");
+		}
+	};
+	
+	public Handler getEmplyeeReviewRequests = (ctx) -> {
+		String input = ctx.pathParam("id");
+		int eid;
+		try {
+			eid = Integer.parseInt(input);
+		} catch (NumberFormatException e) {
+			eid = -1;
+		}
+		
+		List<Request> req = rs.getRequestByReviewerId(eid);
+		if(req != null) {
+			ctx.result(gson.toJson(req));
+		} else {
+			ctx.result("[]");
+		}
+	};
 	
 }

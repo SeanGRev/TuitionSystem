@@ -40,6 +40,8 @@ public class App {
 		
 		app.get("/employees", ec.getAllEmployees);
 		app.get("/employees/:id", ec.getEmployeeById);
+		app.get("employees/:id/sents", rc.getEmployeeRequest);
+		app.patch("employees/:id/reviews", rc.getEmplyeeReviewRequests);
 		
 		app.get("/requests", rc.getAllRequests);
 		app.get("/requests/:id", rc.getRequestById);

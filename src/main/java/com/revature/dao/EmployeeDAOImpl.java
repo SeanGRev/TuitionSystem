@@ -6,16 +6,18 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import com.revature.app.App;
 import com.revature.models.Employee;
 import com.revature.util.HibernateUtil;
 
 public class EmployeeDAOImpl implements EmployeeDAO {
-
+	
 	@Override
 	public List<Employee> getAllEmployees() {
 		
 		Session sess = HibernateUtil.getSession();
 		List<Employee> employees = null;
+		
 		try {
 			employees = sess.createQuery("FROM Employee").list();
 		} catch (HibernateException e) {

@@ -3,14 +3,14 @@ package com.revature.controllers;
 import java.util.List;
 
 import com.google.gson.Gson;
+import com.revature.app.App;
 import com.revature.models.CommandJson;
 import com.revature.models.Employee;
 import com.revature.services.EmployeeService;
-
 import io.javalin.http.Handler;
 
 public class EmployeeController {
-
+	
 	EmployeeService es;
 	Gson gson = new Gson();
 	
@@ -36,6 +36,7 @@ public class EmployeeController {
 	};
 	
 	public Handler getAllEmployees = (ctx) -> {
+		
 		List<Employee> em = es.getAllEmployees();
 		
 		if(em == null) {

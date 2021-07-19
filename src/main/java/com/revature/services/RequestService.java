@@ -10,4 +10,8 @@ public interface RequestService {
 	
 	public List<Request> getAllRequests();
 	
+	public List<Request> getRequestByEmployeeId(int eid);
+	
+	public List<Request> getRequestByReviewerId(int eid);
+	
 }

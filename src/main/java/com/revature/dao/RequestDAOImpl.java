@@ -2,6 +2,7 @@ package com.revature.dao;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 
@@ -40,9 +41,9 @@ public class RequestDAOImpl implements RequestDAO{
 			sess.close();
 		}
 		
-		
 		return requests;
 	}
+	
 	
 	
 }
