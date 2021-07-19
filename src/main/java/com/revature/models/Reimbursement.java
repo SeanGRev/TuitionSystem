@@ -22,8 +22,9 @@ public class Reimbursement {
 	@JoinColumn(name = "employee_id")
 	private Employee employee;
 	
-	@Column(name = "event_id", nullable = false)
-	private int event_id;
+	@OneToOne
+	@JoinColumn(name = "event_id")
+	private Event event;
 	
 	@Column(name="amount", nullable = false)
 	private double amount;
@@ -41,23 +42,23 @@ public class Reimbursement {
 		super();
 	}
 
-	public Reimbursement(Employee employee, int event_id, double amount, int missed_hours, String grade,
+	public Reimbursement(Employee employee, Event event, double amount, int missed_hours, String grade,
 			String description) {
 		super();
 		this.employee = employee;
-		this.event_id = event_id;
+		this.event = event;
 		this.amount = amount;
 		this.missed_hours = missed_hours;
 		this.grade = grade;
 		this.description = description;
 	}
 
-	public Reimbursement(int id, Employee employee, int event_id, double amount, int missed_hours, String grade,
+	public Reimbursement(int id, Employee employee, Event event, double amount, int missed_hours, String grade,
 			String description) {
 		super();
 		this.id = id;
 		this.employee = employee;
-		this.event_id = event_id;
+		this.event = event;
 		this.amount = amount;
 		this.missed_hours = missed_hours;
 		this.grade = grade;
@@ -80,12 +81,12 @@ public class Reimbursement {
 		this.employee = employee;
 	}
 
-	public int getEvent_id() {
-		return event_id;
+	public Event getEvent() {
+		return event;
 	}
 
-	public void setEvent_id(int event_id) {
-		this.event_id = event_id;
+	public void setEvent(Event event) {
+		this.event = event;
 	}
 
 	public double getAmount() {
@@ -122,7 +123,7 @@ public class Reimbursement {
 
 	@Override
 	public String toString() {
-		return "Reimbursement [id=" + id + ", employee=" + employee + ", event_id=" + event_id + ", amount="
+		return "Reimbursement [id=" + id + ", employee=" + employee + ", event=" + event + ", amount="
 				+ amount + ", missed_hours=" + missed_hours + ", grade=" + grade + ", description=" + description + "]";
 	}
 	

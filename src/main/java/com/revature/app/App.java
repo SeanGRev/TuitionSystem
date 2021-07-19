@@ -6,7 +6,7 @@ import com.revature.dao.*;
 import com.revature.services.*;
 import com.revature.controllers.*;
 
-public class Test {
+public class App {
 	
 	public static void main(String[] args) {
 		

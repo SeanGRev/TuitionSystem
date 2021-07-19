@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -18,11 +20,13 @@ public class Event {
     @Column(name = "id", updatable = false, nullable = false)
 	private int id;
     
-    @Column(name="event_type_id", nullable = false)
-	private int event_type_id;
+    @OneToOne
+	@JoinColumn(name = "event_type_id")
+	private EventType event_type;
     
-    @Column(name = "grade_format_id", nullable = false)
-	private int grade_format_id;
+    @OneToOne
+	@JoinColumn(name = "grade_format_id")
+	private GradeFormat grade_format;
     
     @Column(name="start_date", nullable = false)
 	private Date start_date;
@@ -43,11 +47,11 @@ public class Event {
 		super();
 	}
 	
-	public Event(int event_type_id, int grade_format_id, Date start_date, Date end_date, double tuition, String location,
-			String description) {
+	public Event(EventType event_type, GradeFormat grade_format, Date start_date, Date end_date, double tuition,
+			String location, String description) {
 		super();
-		this.event_type_id = event_type_id;
-		this.grade_format_id = grade_format_id;
+		this.event_type = event_type;
+		this.grade_format = grade_format;
 		this.start_date = start_date;
 		this.end_date = end_date;
 		this.tuition = tuition;
@@ -55,12 +59,12 @@ public class Event {
 		this.description = description;
 	}
 
-	public Event(int id, int event_type_id, int grade_format_id, Date start_date, Date end_date, double tuition,
+	public Event(int id, EventType event_type, GradeFormat grade_format, Date start_date, Date end_date, double tuition,
 			String location, String description) {
 		super();
 		this.id = id;
-		this.event_type_id = event_type_id;
-		this.grade_format_id = grade_format_id;
+		this.event_type = event_type;
+		this.grade_format = grade_format;
 		this.start_date = start_date;
 		this.end_date = end_date;
 		this.tuition = tuition;
@@ -68,20 +72,20 @@ public class Event {
 		this.description = description;
 	}
 
-	public int getEvent_type_id() {
-		return event_type_id;
+	public EventType getEvent_type() {
+		return event_type;
 	}
 
-	public void setEvent_type_id(int event_type_id) {
-		this.event_type_id = event_type_id;
+	public void setEvent_type(EventType event_type) {
+		this.event_type = event_type;
 	}
 
-	public int getGrade_format_id() {
-		return grade_format_id;
+	public GradeFormat getGrade_format() {
+		return grade_format;
 	}
 
-	public void setGrade_format_id(int grade_format_id) {
-		this.grade_format_id = grade_format_id;
+	public void setGrade_format(GradeFormat grade_format) {
+		this.grade_format = grade_format;
 	}
 
 	public int getId() {
@@ -134,7 +138,7 @@ public class Event {
 
 	@Override
 	public String toString() {
-		return "Event [id=" + id + ", event_type_id=" + event_type_id + ", grade_format_id=" + grade_format_id
+		return "Event [id=" + id + ", event_type=" + event_type + ", grade_format=" + grade_format
 				+ ", start_date=" + start_date + ", end_date=" + end_date + ", tuition=" + tuition + ", location="
 				+ location + ", description=" + description + "]";
 	}

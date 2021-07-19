@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -16,8 +18,9 @@ public class Presentation {
     @Column(name = "id", updatable = false, nullable = false)
 	private int id;
 	
-	@Column(name="reimbursement_id", nullable = false)
-	private int reimbursement_id;
+	@OneToOne
+	@JoinColumn(name = "reimbursement_id")
+	private Reimbursement reimbursement;
 	
 	@Column(name="description", nullable = false)
 	private String description;
@@ -26,16 +29,16 @@ public class Presentation {
 		super();
 	}
 
-	public Presentation(int reimbursement_id, String description) {
+	public Presentation(Reimbursement reimbursement, String description) {
 		super();
-		this.reimbursement_id = reimbursement_id;
+		this.reimbursement = reimbursement;
 		this.description = description;
 	}
 
-	public Presentation(int id, int reimbursement_id, String description) {
+	public Presentation(int id, Reimbursement reimbursement, String description) {
 		super();
 		this.id = id;
-		this.reimbursement_id = reimbursement_id;
+		this.reimbursement = reimbursement;
 		this.description = description;
 	}
 
@@ -47,12 +50,12 @@ public class Presentation {
 		this.id = id;
 	}
 
-	public int getReimbursement_id() {
-		return reimbursement_id;
+	public Reimbursement getReimbursement() {
+		return reimbursement;
 	}
 
-	public void setReimbursement_id(int reimbursement_id) {
-		this.reimbursement_id = reimbursement_id;
+	public void setReimbursement(Reimbursement reimbursement) {
+		this.reimbursement = reimbursement;
 	}
 
 	public String getDescription() {
@@ -65,7 +68,7 @@ public class Presentation {
 
 	@Override
 	public String toString() {
-		return "Presentation [id=" + id + ", reimbursement_id=" + reimbursement_id + ", description=" + description
+		return "Presentation [id=" + id + ", reimbursement=" + reimbursement + ", description=" + description
 				+ "]";
 	}
 	

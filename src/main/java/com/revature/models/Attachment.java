@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -17,8 +19,9 @@ public class Attachment {
 	@Column(name = "id", updatable = false, nullable = false)
 	private int id;
 	
-	@Column(name="reimbursement_id", nullable = false)
-	private int reimbursement_id;
+	@OneToOne
+	@JoinColumn(name = "reimbursement_id")
+	private Reimbursement reimbursement;
 	
 	@Column(name="attachment", nullable = false)
 	private String attachment;
@@ -27,16 +30,16 @@ public class Attachment {
 		super();
 	}
 
-	public Attachment(int reimbursement_id, String attachment) {
+	public Attachment(Reimbursement reimbursement, String attachment) {
 		super();
-		this.reimbursement_id = reimbursement_id;
+		this.reimbursement = reimbursement;
 		this.attachment = attachment;
 	}
 
-	public Attachment(int id, int reimbursement_id, String attachment) {
+	public Attachment(int id, Reimbursement reimbursement, String attachment) {
 		super();
 		this.id = id;
-		this.reimbursement_id = reimbursement_id;
+		this.reimbursement = reimbursement;
 		this.attachment = attachment;
 	}
 
@@ -48,12 +51,12 @@ public class Attachment {
 		this.id = id;
 	}
 
-	public int getReimbursement_id() {
-		return reimbursement_id;
+	public Reimbursement getReimbursement() {
+		return reimbursement;
 	}
 
-	public void setReimbursement_id(int reimbursement_id) {
-		this.reimbursement_id = reimbursement_id;
+	public void setReimbursement(Reimbursement reimbursement) {
+		this.reimbursement = reimbursement;
 	}
 
 	public String getAttachment() {
@@ -66,7 +69,7 @@ public class Attachment {
 
 	@Override
 	public String toString() {
-		return "Attachment [id=" + id + ", reimbursement_id=" + reimbursement_id + ", attachment=" + attachment + "]";
+		return "Attachment [id=" + id + ", reimbursement=" + reimbursement + ", attachment=" + attachment + "]";
 	}
 	
 }
