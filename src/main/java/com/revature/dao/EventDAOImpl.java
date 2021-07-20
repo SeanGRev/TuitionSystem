@@ -7,6 +7,8 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import com.revature.models.Event;
+import com.revature.models.EventType;
+import com.revature.models.GradeFormat;
 import com.revature.util.HibernateUtil;
 
 public class EventDAOImpl implements EventDAO {
@@ -41,6 +43,57 @@ public class EventDAOImpl implements EventDAO {
 		}
 
 		return ev;
+	}
+
+	@Override
+	public Event addEvent(Event ev) {
+		Session sess = HibernateUtil.getSession();
+		
+		try {
+			sess.beginTransaction();
+			ev.setId((int) sess.save(ev));
+			sess.getTransaction().commit();
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			sess.getTransaction().rollback();
+			ev = null;
+		} finally {
+			sess.close();
+		}
+		
+		return ev;
+	}
+
+	@Override
+	public EventType getEventType(int id) {
+		Session sess = HibernateUtil.getSession();
+		EventType evtype = null;
+		
+		try {
+			evtype = sess.get(EventType.class, id);
+		} catch (HibernateException e) {
+			e.printStackTrace();
+		} finally {
+			sess.close();
+		}
+		
+		return evtype;
+	}
+
+	@Override
+	public GradeFormat getGradeFormat(int id) {
+		Session sess = HibernateUtil.getSession();
+		GradeFormat gformat = null;
+		
+		try {
+			gformat = sess.get(GradeFormat.class, id);
+		} catch (HibernateException e) {
+			e.printStackTrace();
+		} finally {
+			sess.close();
+		}
+		
+		return gformat;
 	}
 	
 }

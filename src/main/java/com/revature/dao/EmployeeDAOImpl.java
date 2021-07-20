@@ -44,5 +44,26 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
 		return em;
 	}
+
+	@Override
+	public Employee addEmployee(Employee em) {
+		Session sess = HibernateUtil.getSession();
+		
+		try {
+			sess.beginTransaction();
+			em.setId((int) sess.save(em));
+			sess.getTransaction().commit();
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			sess.getTransaction().rollback();
+			em = null;
+		} finally {
+			sess.close();
+		}
+
+		return em;
+	}
+	
+	
 	
 }

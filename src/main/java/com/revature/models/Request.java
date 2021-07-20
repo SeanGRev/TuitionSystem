@@ -1,6 +1,6 @@
 package com.revature.models;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -34,7 +34,7 @@ public class Request {
 	@Column(name="approval_status", nullable=true)
 	private boolean approval_status;
 	@Column(name="submission_date", nullable=false)
-	private Date submission_date;
+	private LocalDate submission_date;
 	@Column(name="urgent", nullable=false)
 	private boolean urgent;
 	
@@ -43,7 +43,7 @@ public class Request {
 	}
 
 	public Request(String message, Reimbursement reimbursement, Employee reviewer, Employee sender,
-			boolean approval_status, Date submission_date, boolean urgent) {
+			boolean approval_status, LocalDate submission_date, boolean urgent) {
 		super();
 		this.message = message;
 		this.reimbursement = reimbursement;
@@ -55,7 +55,7 @@ public class Request {
 	}
 	
 	public Request(int id, String message, Reimbursement reimbursement, Employee reviewer, Employee sender,
-			boolean approval_status, Date submission_date, boolean urgent) {
+			boolean approval_status, LocalDate submission_date, boolean urgent) {
 		super();
 		this.id = id;
 		this.message = message;
@@ -115,11 +115,11 @@ public class Request {
 		this.approval_status = approval_status;
 	}
 
-	public Date getSubmission_date() {
+	public LocalDate getSubmission_date() {
 		return submission_date;
 	}
 
-	public void setSubmission_date(Date submission_date) {
+	public void setSubmission_date(LocalDate submission_date) {
 		this.submission_date = submission_date;
 	}
 

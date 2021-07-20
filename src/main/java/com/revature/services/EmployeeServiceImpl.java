@@ -21,4 +21,22 @@ public class EmployeeServiceImpl implements EmployeeService{
 		return edao.getAllEmployees();
 	}
 	
+	public Employee addEmployee(Employee em) {
+		return edao.addEmployee(em);
+	}
+
+	@Override
+	public Employee getEmployeeByEmail(String email) {
+		List<Employee> employees = edao.getAllEmployees();
+		Employee em = new Employee();
+		for(Employee e : employees) {
+			if(e.getEmail().equals(email)) {
+				em = e;
+			}
+		}
+		return em;
+	}
+	
+	
+	
 }

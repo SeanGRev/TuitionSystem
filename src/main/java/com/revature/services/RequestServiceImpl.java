@@ -23,7 +23,7 @@ public class RequestServiceImpl implements RequestService{
 	}
 
 	@Override
-	public List<Request> getRequestByEmployeeId(int eid) {
+	public List<Request> getEmployeeSentRequests(int eid) {
 		List<Request> requests = rdao.getAllRequests();
 		List<Request> result = new ArrayList<Request>();
 		
@@ -46,6 +46,11 @@ public class RequestServiceImpl implements RequestService{
 			}
 		}
 		return result;
+	}
+
+	@Override
+	public Request addRequest(Request req) {
+		return rdao.addRequest(req);
 	}
 	
 	

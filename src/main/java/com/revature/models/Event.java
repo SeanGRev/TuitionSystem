@@ -1,6 +1,6 @@
 package com.revature.models;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -29,10 +29,10 @@ public class Event {
 	private GradeFormat grade_format;
     
     @Column(name="start_date", nullable = false)
-	private Date start_date;
+	private LocalDate start_date;
     
     @Column(name="end_date", nullable = true)
-	private Date end_date;
+	private LocalDate end_date;
     
     @Column(name="tuition", nullable = false)
 	private double tuition;
@@ -47,7 +47,7 @@ public class Event {
 		super();
 	}
 	
-	public Event(EventType event_type, GradeFormat grade_format, Date start_date, Date end_date, double tuition,
+	public Event(EventType event_type, GradeFormat grade_format, LocalDate start_date, LocalDate end_date, double tuition,
 			String location, String description) {
 		super();
 		this.event_type = event_type;
@@ -59,7 +59,7 @@ public class Event {
 		this.description = description;
 	}
 
-	public Event(int id, EventType event_type, GradeFormat grade_format, Date start_date, Date end_date, double tuition,
+	public Event(int id, EventType event_type, GradeFormat grade_format, LocalDate start_date, LocalDate end_date, double tuition,
 			String location, String description) {
 		super();
 		this.id = id;
@@ -96,19 +96,19 @@ public class Event {
 		this.id = id;
 	}
 
-	public Date getStart_date() {
+	public LocalDate getStart_date() {
 		return start_date;
 	}
 
-	public void setStart_date(Date start_date) {
+	public void setStart_date(LocalDate start_date) {
 		this.start_date = start_date;
 	}
 
-	public Date getEnd_date() {
+	public LocalDate getEnd_date() {
 		return end_date;
 	}
 
-	public void setEnd_date(Date end_date) {
+	public void setEnd_date(LocalDate end_date) {
 		this.end_date = end_date;
 	}
 

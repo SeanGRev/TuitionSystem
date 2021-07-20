@@ -10,4 +10,8 @@ public interface EmployeeService {
 	
 	public List<Employee> getAllEmployees();
 	
+	public Employee addEmployee(Employee em);
+	
+	public Employee getEmployeeByEmail(String email);
+	
 }

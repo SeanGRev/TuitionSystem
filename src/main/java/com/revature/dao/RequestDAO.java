@@ -10,4 +10,6 @@ public interface RequestDAO {
 	
 	public List<Request> getAllRequests();
 	
+	public Request addRequest(Request req);
+	
 }
