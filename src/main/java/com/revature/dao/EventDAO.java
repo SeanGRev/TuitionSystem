@@ -16,6 +16,10 @@ public interface EventDAO {
 	
 	public EventType getEventType(int id);
 	
+	public List<EventType> getAllEventTypes();
+	
 	public GradeFormat getGradeFormat(int id);
+	
+	public List<GradeFormat> getAllGradeFormats();
 	
 }

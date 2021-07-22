@@ -12,7 +12,7 @@ public class App {
 	public static void main(String[] args) {
 		disableAccessWarnings();
 		//Establish our Javalin Object
-		Javalin app = Javalin.create();
+		Javalin app = Javalin.create(config -> config.enableCorsForAllOrigins());
 		
 		//Establish the Routes/Endpoints Javalin will manage
 		establishRoutes(app);
@@ -39,6 +39,7 @@ public class App {
 		
 		app.get("/", (ctx) -> ctx.result("Tuition System Home Page"));
 		
+		app.get("/departments", ec.getDepartments);
 		app.get("/employees", ec.getAllEmployees);
 		app.get("/employees/:id", ec.getEmployeeById);
 		app.get("/employees/:id/sents", rc.getEmployeeSentRequests);
@@ -56,6 +57,8 @@ public class App {
 		
 		app.get("/events", evc.getAllEvents);
 		app.get("/events/:id", evc.getEventById);
+		app.get("/eventtypes", evc.getEventTypes);
+		app.get("/gradeformats", evc.getGradeFormats);
 		app.post("/events", evc.addEvent);
 	}
 	

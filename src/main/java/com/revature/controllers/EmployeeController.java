@@ -67,8 +67,20 @@ public class EmployeeController {
 		
 		if(em != null) {
 			ctx.result(gson.toJson(em));
+			ctx.status(201);
 		} else {
 			ctx.status(400);
+		}
+	};
+	
+	public Handler getDepartments = (ctx) -> {
+		
+		List<Department> deps = ds.getAllDepartments();
+		
+		if(deps == null) {
+			ctx.result("[]");
+		} else {
+			ctx.result(gson.toJson(deps));
 		}
 	};
 	

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Requests Page </title>
+
+        <!-- Bootstrap is good to use -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" 
+        rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" 
+        crossorigin="anonymous">
+    </head>
+
+    <body>
+        <h1> Requests Page </h1>
+        <h3> Get a Request </h3>
+        <div class="input-group mb-3">
+            <input id = "RequestIdInput" type="number" class="form-control" placeholder="Request ID" aria-label="RequestID" aria-describedby="basic-addon1">
+        </div>
+
+        <script src = "../requests.js"></script>
+        <button style="text-align:center;" onclick="getRequestData()">Get Data</button>
+        
+        <table class="table table-light table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Request ID</th>
+                <th scope="col">Reviewer</th>
+                <th scope="col">Sender</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Message</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td id="requestid"></th>
+                <td id="reviewer"></td>
+                <td id="sender"></td>
+                <td id="amount"></td>
+                <td id="message"></td>
+              </tr>
+            </tbody>
+        </table>
+
+        <hr>
+        <!-- Now Handling Creating a new Request -->
+        <h3> Create a new Request </h3>
+        <div class="input-group">
+            <input id="reviewer_email" type="text" placeholder="Reviewer's Email" aria-label="Reviwer Email" class="form-control">
+        </div>
+        <div class="input-group">
+            <input id="sender_email" type="text" placeholder="Sender's Email" aria-label="Sender Email" class="form-control">
+        </div>
+        <div class="input-group">
+            <input id="reimbursement_id" type="number" placeholder="Reimbursement ID" aria-label="Reimbursement ID" class="form-control">
+        </div>
+        <div class="input-group">
+            <input id="submission_date" type="text" placeholder="YYYY-MM-DD" aria-label="Submission Date" class="form-control">
+        </div>
+        <div class="input-group">
+            <input id="request_message" type="text" placeholder="Type message here" aria-label="Request Message" class="form-control">
+        </div>
+
+        <button style="text-align:center;" onclick="postRequest()">Create Request</button>
+    </body>
+</html>

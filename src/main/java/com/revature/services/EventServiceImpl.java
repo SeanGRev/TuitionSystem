@@ -39,5 +39,15 @@ public class EventServiceImpl implements EventService{
 	public GradeFormat getGradeFormat(int id) {
 		return edao.getGradeFormat(id);
 	}
+
+	@Override
+	public List<EventType> getAllEventTypes() {
+		return edao.getAllEventTypes();
+	}
+
+	@Override
+	public List<GradeFormat> getAllGradeFormats() {
+		return edao.getAllGradeFormats();
+	}
 	
 }

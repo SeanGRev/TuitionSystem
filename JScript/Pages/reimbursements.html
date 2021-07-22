@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Reimbursements Page </title>
+
+        <!-- Bootstrap is good to use -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" 
+        rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" 
+        crossorigin="anonymous">
+    </head>
+
+    <body>
+        <h1> Reimbursements Page </h1>
+        <h3> Get a Reimbursement </h3>
+        <div class="input-group mb-3">
+            <input id = "ReimbursementIdInput" type="number" class="form-control" placeholder="Reimbursement ID" aria-label="RequestID" aria-describedby="basic-addon1">
+        </div>
+
+        <script src = "../reimbursements.js"></script>
+        <button style="text-align:center;" onclick="getReimbursementData()">Get Data</button>
+
+        <table class="table table-light table-striped">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Employee Name</th>
+                <th scope="col">Event Type</th>
+                <th scope="col">Grade Format</th>
+                <th scope="col">Grade</th>
+                <th scope="col">Missed Hours</th>
+                <th scope="col">Reimbursement Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td id="reimbursementid"></th>
+                <td id="employeeName"></td>
+                <td id="eventType"></td>
+                <td id="gradeFormat"></td>
+                <td id="grade"></td>
+                <td id="missedHours"></td>
+                <td id="reimbursementAmount"></td>
+              </tr>
+            </tbody>
+        </table>
+
+        <hr>
+        <!-- Now Handling Creating a new Reimbursement -->
+        <h3> Create a new Reimbursement </h3>
+        <div class="input-group">
+          <input id="employee_email_input" type="text" placeholder="Employee's Email" class="form-control">
+        </div>
+        <div class="input-group">
+          <input id="event_id_input" type="text" placeholder="Event ID" class="form-control">
+        </div>
+        <div class="input-group">
+          <input id="amount_input" type="number" placeholder="Reimbursement Amount" class="form-control">
+        </div>
+        <div class="input-group">
+          <input id="missed_hours_input" type="number" placeholder="Missed Hours" class="form-control">
+        </div>
+        <div class="input-group">
+          <input id="grade_input" type="text" placeholder="Grade Received" class="form-control">
+        </div>
+        <div class="input-group">
+          <input id="description_input" type="text" placeholder="Basic Description" class="form-control">
+        </div>
+
+        <button style="text-align:center;" onclick="postReimbursement()">Create Reimbursement</button>
+    </body>
+</html>

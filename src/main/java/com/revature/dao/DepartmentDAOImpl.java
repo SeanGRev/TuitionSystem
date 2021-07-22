@@ -1,5 +1,7 @@
 package com.revature.dao;
 
+import java.util.List;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 
@@ -24,5 +26,23 @@ public class DepartmentDAOImpl implements DepartmentDAO {
 		
 		return d;
 	}
+
+	@Override
+	public List<Department> getAllDepartments() {
+		Session sess = HibernateUtil.getSession();
+		List<Department> departments = null;
+		
+		try {
+			departments = sess.createQuery("FROM Department").list();
+		} catch (HibernateException e) {
+			e.printStackTrace();
+		} finally {
+			sess.close();
+		}
+		
+		return departments;
+	}
+	
+	
 	
 }

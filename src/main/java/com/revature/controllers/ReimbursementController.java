@@ -76,6 +76,7 @@ public class ReimbursementController {
 		
 		if(rei != null) {
 			ctx.result(gson.toJson(rei));
+			ctx.status(201);
 		} else {
 			ctx.status(400);
 		}

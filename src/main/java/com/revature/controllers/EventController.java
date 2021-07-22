@@ -62,10 +62,30 @@ public class EventController {
 		ev = es.addEvent(ev);
 		if(ev != null) {
 			ctx.result(gson.toJson(ev));
+			ctx.status(201);
 		} else {
 			ctx.status(400);
 		}
 	};
 	
+	public Handler getEventTypes = (ctx) -> {
+		List<EventType> eventTypes = es.getAllEventTypes();
+		
+		if(eventTypes != null) {
+			ctx.result(gson.toJson(eventTypes));
+		} else {
+			ctx.result("[]");
+		}
+	};
+	
+	public Handler getGradeFormats = (ctx) -> {
+		List<GradeFormat> gradeFormats = es.getAllGradeFormats();
+		
+		if(gradeFormats != null) {
+			ctx.result(gson.toJson(gradeFormats));
+		} else {
+			ctx.result("[]");
+		}
+	};
 	
 }

@@ -112,6 +112,7 @@ public class RequestController {
 		
 		if(req != null) {
 			ctx.result(gson.toJson(req));
+			ctx.status(201);
 		} else {
 			ctx.status(400);
 		}

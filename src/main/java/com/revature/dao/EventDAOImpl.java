@@ -95,5 +95,35 @@ public class EventDAOImpl implements EventDAO {
 		
 		return gformat;
 	}
+
+	@Override
+	public List<EventType> getAllEventTypes() {
+		Session sess = HibernateUtil.getSession();
+		List<EventType> eTypes = null;
+		try {
+			eTypes = sess.createQuery("FROM EventType").list();
+		} catch (HibernateException e) {
+			e.printStackTrace();
+		} finally {
+			sess.close();
+		}
+		
+		return eTypes;
+	}
+
+	@Override
+	public List<GradeFormat> getAllGradeFormats() {
+		Session sess = HibernateUtil.getSession();
+		List<GradeFormat> gFormats = null;
+		try {
+			gFormats = sess.createQuery("FROM GradeFormat").list();
+		} catch (HibernateException e) {
+			e.printStackTrace();
+		} finally {
+			sess.close();
+		}
+		
+		return gFormats;
+	}
 	
 }
