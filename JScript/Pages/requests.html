@@ -8,58 +8,93 @@
         rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" 
         crossorigin="anonymous">
+
+        <style>
+            fieldset {
+                background-color: #eeeeee;
+                width: 75%;
+                border: solid black;
+              }
+              
+              legend {
+                background-color: gray;
+                color: white;
+                padding: 5px 10px;
+              }
+  
+              input {
+                width: 50%;
+                margin: 5px 5px;
+              }
+  
+              button {
+                margin: 5px 5px;
+              }
+
+              p{
+                margin: 5px 5px;
+                border: dotted black;
+                width: 25%;
+                text-align: center;
+              }
+          </style>
     </head>
 
     <body>
         <h1> Requests Page </h1>
-        <h3> Get a Request </h3>
-        <div class="input-group mb-3">
-            <input id = "RequestIdInput" type="number" class="form-control" placeholder="Request ID" aria-label="RequestID" aria-describedby="basic-addon1">
-        </div>
+        <fieldset>
+            <legend> Get a Request </legend>
+            <div class="input-group mb-3">
+                <input id = "RequestIdInput" type="number" class="form-control" placeholder="Request ID" aria-label="RequestID" aria-describedby="basic-addon1">
+            </div>
 
-        <script src = "../requests.js"></script>
-        <button style="text-align:center;" onclick="getRequestData()">Get Data</button>
-        
-        <table class="table table-light table-striped">
-            <thead>
-              <tr>
-                <th scope="col">Request ID</th>
-                <th scope="col">Reviewer</th>
-                <th scope="col">Sender</th>
-                <th scope="col">Amount</th>
-                <th scope="col">Message</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td id="requestid"></th>
-                <td id="reviewer"></td>
-                <td id="sender"></td>
-                <td id="amount"></td>
-                <td id="message"></td>
-              </tr>
-            </tbody>
-        </table>
-
+            <script src = "../requests.js"></script>
+            <button id = "getRequestButton" style="text-align:center;" onclick="getRequestData()">Get Data</button>
+            
+            <table class="table table-light table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">Request ID</th>
+                    <th scope="col">Reviewer</th>
+                    <th scope="col">Sender</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Message</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td id="requestid"></th>
+                    <td id="reviewer"></td>
+                    <td id="sender"></td>
+                    <td id="amount"></td>
+                    <td id="message"></td>
+                </tr>
+                </tbody>
+            </table>
+        </fieldset>
         <hr>
         <!-- Now Handling Creating a new Request -->
-        <h3> Create a new Request </h3>
-        <div class="input-group">
-            <input id="reviewer_email" type="text" placeholder="Reviewer's Email" aria-label="Reviwer Email" class="form-control">
-        </div>
-        <div class="input-group">
-            <input id="sender_email" type="text" placeholder="Sender's Email" aria-label="Sender Email" class="form-control">
-        </div>
-        <div class="input-group">
-            <input id="reimbursement_id" type="number" placeholder="Reimbursement ID" aria-label="Reimbursement ID" class="form-control">
-        </div>
-        <div class="input-group">
-            <input id="submission_date" type="text" placeholder="YYYY-MM-DD" aria-label="Submission Date" class="form-control">
-        </div>
-        <div class="input-group">
-            <input id="request_message" type="text" placeholder="Type message here" aria-label="Request Message" class="form-control">
-        </div>
+        <fieldset>
+            <legend> Create a new Request </legend>
+            <div class="input-group">
+                <input id="reviewer_email" type="text" placeholder="Reviewer's Email" aria-label="Reviwer Email" class="form-control">
+            </div>
+            <div class="input-group">
+                <input id="sender_email" type="text" placeholder="Sender's Email" aria-label="Sender Email" class="form-control">
+            </div>
+            <div class="input-group">
+                <input id="reimbursement_id" type="number" placeholder="Reimbursement ID" aria-label="Reimbursement ID" class="form-control">
+            </div>
+            <div class="input-group">
+                <input id="submission_date" type="text" placeholder="YYYY-MM-DD" aria-label="Submission Date" class="form-control">
+            </div>
+            <div class="input-group">
+                <input id="request_message" type="text" placeholder="Type message here" aria-label="Request Message" class="form-control">
+            </div>
 
-        <button style="text-align:center;" onclick="postRequest()">Create Request</button>
+            <button id="createRequestButton" style="text-align:center;" onclick="postRequest()">Create Request</button>
+
+            <p id="reqMessageBox"></p>
+        </fieldset>
     </body>
 </html>

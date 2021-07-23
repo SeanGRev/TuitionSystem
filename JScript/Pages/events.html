@@ -7,71 +7,105 @@
         rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" 
         crossorigin="anonymous">
+
+        <style>
+          fieldset {
+              background-color: #eeeeee;
+              width: 75%;
+              border: solid black;
+            }
+            
+            legend {
+              background-color: gray;
+              color: white;
+              padding: 5px 10px;
+            }
+
+            input {
+              width: 50%;
+              margin: 5px 5px;
+            }
+
+            button {
+              margin: 5px 5px;
+            }
+
+            p{
+              margin: 5px 5px;
+              border: dotted black;
+              width: 25%;
+              text-align: center;
+            }
+        </style>
     </head>
     <body>
-        <h1> Events Page </h1>
-        <h3> Get an Event </h3>
+        <fieldset>
+          <legend> Events Page </legend>
+          <h3> Get an Event </h3>
 
-        <div class="input-group mb-3">
-            <input id = "EventIdInput" type="number" class="form-control" placeholder="Event ID" aria-label="EventID" aria-describedby="basic-addon1">
-        </div>
+          <div class="input-group mb-3">
+              <input id = "EventIdInput" type="number" class="form-control" placeholder="Event ID" aria-label="EventID" aria-describedby="basic-addon1">
+          </div>
 
-        <script src = "../events.js"></script>
-        <button style="text-align:center;" onclick="getEventData()">Get Data</button>
-        
-        <table class="table table-light table-striped">
-            <thead>
-              <tr>
-                <th scope="col">Event ID</th>
-                <th scope="col">Event Type</th>
-                <th scope="col">Grade Format</th>
-                <th scope="col">Start Date</th>
-                <th scope="col">End Date</th>
-                <th scope="col">Tuition</th>
-                <th scope="col">Location</th>
-                <th scope="col">Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td id="eventid"></th>
-                <td id="event_type"></td>
-                <td id="grade_format"></td>
-                <td id="start_date"></td>
-                <td id="end_date"></td>
-                <td id="tuition"></td>
-                <td id="location"></td>
-                <td id="description"></td>
-              </tr>
-            </tbody>
-        </table>
+          <script src = "../events.js"></script>
+          <button id = "getEventButton" style="text-align:center;" onclick="getEventData()">Get Data</button>
+          
+          <table class="table table-light table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">Event ID</th>
+                  <th scope="col">Event Type</th>
+                  <th scope="col">Grade Format</th>
+                  <th scope="col">Start Date</th>
+                  <th scope="col">End Date</th>
+                  <th scope="col">Tuition</th>
+                  <th scope="col">Location</th>
+                  <th scope="col">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td id="eventid"></th>
+                  <td id="event_type"></td>
+                  <td id="grade_format"></td>
+                  <td id="start_date"></td>
+                  <td id="end_date"></td>
+                  <td id="tuition"></td>
+                  <td id="location"></td>
+                  <td id="description"></td>
+                </tr>
+              </tbody>
+          </table>
+        </fieldset>
 
         <hr>
         <!-- Now Handling Creating a new Request -->
-        <h3> Create a new Event </h3>
-        <div class="input-group">
-          <input id="eventTypeIdInput" type="number" placeholder="Event Type ID" aria-label="Event Type ID" class="form-control">
-        </div>
-        <div class="input-group">
-          <input id="gradeFormatIdInput" type="number" placeholder="Grade Format ID" aria-label="Grade Format ID" class="form-control">
-        </div>
-        <div class="input-group">
-          <input id="startDateInput" type="text" placeholder="YYYY-MM-DD" aria-label="StartDate" class="form-control">
-        </div>
-        <div class="input-group">
-          <input id="endDateInput" type="text" placeholder="YYYY-MM-DD" aria-label="EndDate" class="form-control">
-        </div>
-        <div class="input-group">
-          <input id="tuitionInput" type="number" placeholder="Tuition" aria-label="Tuition" class="form-control">
-        </div>
-        <div class="input-group">
-          <input id="locationInput" type="text" placeholder="City/Town, State" aria-label="Location" class="form-control">
-        </div>
-        <div class="input-group">
-          <input id="descriptionInput" type="text" placeholder="Description" aria-label="Description" class="form-control">
-        </div>
+        <fieldset>
+          <legend> Create a new Event </legend>
+          <div class="input-group">
+            <input id="eventTypeIdInput" type="number" placeholder="Event Type ID" aria-label="Event Type ID" class="form-control">
+          </div>
+          <div class="input-group">
+            <input id="gradeFormatIdInput" type="number" placeholder="Grade Format ID" aria-label="Grade Format ID" class="form-control">
+          </div>
+          <div class="input-group">
+            <input id="startDateInput" type="text" placeholder="YYYY-MM-DD" aria-label="StartDate" class="form-control">
+          </div>
+          <div class="input-group">
+            <input id="endDateInput" type="text" placeholder="YYYY-MM-DD" aria-label="EndDate" class="form-control">
+          </div>
+          <div class="input-group">
+            <input id="tuitionInput" type="number" placeholder="Tuition" aria-label="Tuition" class="form-control">
+          </div>
+          <div class="input-group">
+            <input id="locationInput" type="text" placeholder="City/Town, State" aria-label="Location" class="form-control">
+          </div>
+          <div class="input-group">
+            <input id="descriptionInput" type="text" placeholder="Description" aria-label="Description" class="form-control">
+          </div>
 
-        <button style="text-align:center;" onclick="postEvent()">Create Event</button>
-
+          <button id="createEventButton" style="text-align:center;" onclick="postEvent()">Create Event</button>
+          <p id="evMessageBox"></p>
+        </fieldset>
     </body>
 </html>

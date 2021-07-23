@@ -19,6 +19,33 @@ public class TuitionSystemMain {
 	@FindBy(id = "eventPageLink")
 	public WebElement eventLink;
 	
+	@FindBy(id = "RequestIdInput")
+	public WebElement requestIdInput;
+	
+	@FindBy(id = "getRequestButton")
+	public WebElement getRequestButton;
+	
+	@FindBy(id = "requestid")
+	public WebElement requestid;
+	
+	@FindBy(id = "ReimbursementIdInput")
+	public WebElement reimbursementIdInput;
+	
+	@FindBy(id = "getReimbursementButton")
+	public WebElement getReimbursementButton;
+	
+	@FindBy(id = "reimbursementid")
+	public WebElement reimbursementid;
+	
+	@FindBy(id = "EventIdInput")
+	public WebElement eventIdInput;
+	
+	@FindBy(id = "getEventButton")
+	public WebElement getEventButton;
+	
+	@FindBy(id = "eventid")
+	public WebElement eventid;
+	
 	public TuitionSystemMain(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);

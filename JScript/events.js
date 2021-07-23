@@ -83,5 +83,7 @@ function postEvent(){
     //step 4
     newEvent = JSON.stringify(newEvent);
     xhttp.send(newEvent);
-    console.log("Success!");
+
+    document.getElementById("evMessageBox").innerHTML = "Request Sent!";
+
 }

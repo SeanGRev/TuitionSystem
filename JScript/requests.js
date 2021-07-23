@@ -76,4 +76,6 @@ function postRequest(){
     newRequest = JSON.stringify(newRequest);
     xhttp.send(newRequest);
     console.log("Success!");
+
+    document.getElementById("reqMessageBox").innerHTML = "Request Sent!";
 }

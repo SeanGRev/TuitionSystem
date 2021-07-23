@@ -8,19 +8,51 @@
         rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" 
         crossorigin="anonymous">
+
+        <style>
+            fieldset {
+              background-color: #eeeeee;
+              width: 50%;
+              border: solid black;
+            }
+            
+            legend {
+              background-color: gray;
+              color: white;
+              padding: 5px 10px;
+            }
+
+            a{
+                border: solid black;
+                text-decoration: none;
+                padding: 5px;
+                border-radius: 5px;
+            }
+
+            a:hover {
+                color: black;
+            }
+
+            div{
+                margin: 20px 5px;
+            }
+
+        </style>
     </head>
 
     <body>
         <h1> Tuition System Home Page </h1>
-        <h3> Links </h3>
-        <div>
-            <a id = "requestPageLink" href = "Pages/requests.html"> Go to the Requests Page</a>
-        </div>
-        <div>
-            <a id = "reimbursementPageLink" href = "Pages/reimbursements.html"> Go to the Reimbursements Page</a>
-        </div>
-        <div>
-            <a id = "eventPageLink" href = "Pages/events.html"> Go to the Events Page</a>
-        </div>
+        <fieldset>
+            <legend>Links</legend>
+            <div>
+                <a id = "requestPageLink" href = "Pages/requests.html"> Go to the Requests Page</a>
+            </div>
+            <div>
+                <a id = "reimbursementPageLink" href = "Pages/reimbursements.html"> Go to the Reimbursements Page</a>
+            </div>
+            <div>
+                <a id = "eventPageLink" href = "Pages/events.html"> Go to the Events Page</a>
+            </div>
+        </fieldset>
     </body>
 </html>

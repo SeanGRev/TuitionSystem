@@ -76,4 +76,6 @@ function postReimbursement(){
     newReimbursement = JSON.stringify(newReimbursement);
     xhttp.send(newReimbursement);
     console.log("Success!");
+
+    document.getElementById("reimMessageBox").innerHTML = "Request Sent!";
 }
