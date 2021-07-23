@@ -36,12 +36,36 @@
               width: 25%;
               text-align: center;
             }
+
+            a{
+                border: solid black;
+                background-color: lightgray;
+                text-decoration: none;
+                border-radius: 5px;
+                padding: 2px;
+                margin:5px 5px;
+            }
+
+            a:hover {
+                color: black;
+            }
+            
+            fieldset{
+              margin: 5px 5px;
+            }
+
+            h1{
+              margin: 5px 5px;
+            }
         </style>
     </head>
     <body>
+      <h1> Events Page </h1>
+        <div>
+          <a href = "../index.html"> Go to the Main Page</a>
+        </div>
         <fieldset>
-          <legend> Events Page </legend>
-          <h3> Get an Event </h3>
+          <legend> Get an Event </legend>
 
           <div class="input-group mb-3">
               <input id = "EventIdInput" type="number" class="form-control" placeholder="Event ID" aria-label="EventID" aria-describedby="basic-addon1">
