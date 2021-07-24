@@ -17,7 +17,7 @@
             }
             
             legend {
-              background-color: gray;
+              background-color: black;
               color: white;
               padding: 5px 10px;
             }
@@ -32,16 +32,14 @@
             }
 
             a{
-                border: solid black;
-                background-color: lightgray;
                 text-decoration: none;
-                border-radius: 5px;
-                padding: 2px;
-                margin:5px 5px;
+                padding: 5px;
+                background-color: black;
+                color: white;
             }
 
-            a:hover {
-                color: black;
+            a:hover{
+                color: cyan;
             }
             
             fieldset{
@@ -51,14 +49,30 @@
             h1{
               margin: 5px 5px;
             }
+
+            #navBar{
+                background-color: black;
+                padding: 10px;
+            }
         </style>
     </head>
 
     <body>
+      <div id="navBar">
+        <span>
+            <a id = "indexLink" href = "../index.html"> Go to the Home Page</a>
+        </span>
+        <span>
+            <a id = "requestPageLink" href = "requests.html"> Go to the Requests Page</a>
+        </span>
+        <span>
+            <a id = "reimbursementPageLink" href = "reimbursements.html"> Go to the Reimbursements Page</a>
+        </span>
+        <span>
+            <a id = "eventPageLink" href = "events.html"> Go to the Events Page</a>
+        </span>
+      </div>
         <h1> Reimbursements Page </h1>
-        <div>
-          <a href = "../index.html"> Go to the Main Page</a>
-        </div>
         <fieldset>
           <legend> Get a Reimbursement </legend>
           <div class="input-group mb-3">

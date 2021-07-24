@@ -18,23 +18,23 @@
             }
             
             legend {
-              background-color: black;
+              background-color: gray;
               color: white;
               padding: 5px 10px;
             }
 
             a{
+                border: solid black;
                 text-decoration: none;
                 padding: 5px;
-                background-color: black;
-                color: white;
+                border-radius: 5px;
             }
 
-            a:hover{
-                color: cyan;
+            a:hover {
+                color: black;
             }
 
-            fieldset div{
+            div{
                 margin: 20px 5px;
             }
 
@@ -42,31 +42,25 @@
               margin: 5px 5px;
             }
 
-            #navBar{
-                background-color: black;
-                padding: 10px;
-            }
-
         </style>
     </head>
 
     <body>
-        <div id="navBar">
-            <span>
-                <a id = "indexLink" href = "index.html"> Go to the Home Page</a>
-            </span>
-            <span>
-                <a id = "requestPageLink" href = "Pages/requests.html"> Go to the Requests Page</a>
-            </span>
-            <span>
-                <a id = "reimbursementPageLink" href = "Pages/reimbursements.html"> Go to the Reimbursements Page</a>
-            </span>
-            <span>
-                <a id = "eventPageLink" href = "Pages/events.html"> Go to the Events Page</a>
-            </span>
-        </div>
-
         <h1> Tuition System Home Page </h1>
+
+        
+        <fieldset>
+            <legend>Links</legend>
+            <div>
+                <a id = "requestPageLink" href = "Pages/requests.html"> Go to the Requests Page</a>
+            </div>
+            <div>
+                <a id = "reimbursementPageLink" href = "Pages/reimbursements.html"> Go to the Reimbursements Page</a>
+            </div>
+            <div>
+                <a id = "eventPageLink" href = "Pages/events.html"> Go to the Events Page</a>
+            </div>
+        </fieldset>
 
         <hr>
         <fieldset>
