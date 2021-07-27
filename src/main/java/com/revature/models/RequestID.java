@@ -29,6 +29,21 @@ public class RequestID {
 		this.submission_date = submission_date;
 		this.urgent = urgent;
 	}
+	
+	public RequestID(int id, String message, int reimbursement_id, String reviewer_email, String sender_email,
+			boolean approval_status, String submission_date, boolean urgent) {
+		super();
+		this.id = id;
+		this.message = message;
+		this.reimbursement_id = reimbursement_id;
+		this.reviewer_email = reviewer_email;
+		this.sender_email = sender_email;
+		this.approval_status = approval_status;
+		this.submission_date = submission_date;
+		this.urgent = urgent;
+	}
+
+
 
 	public int getId() {
 		return id;

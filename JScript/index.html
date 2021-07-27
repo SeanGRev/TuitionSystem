@@ -70,22 +70,22 @@
 
         <hr>
         <fieldset>
-            <legend>To Do</legend>
-            <div>
-                1. Add Login Feature
-            </div>
-            <div>
-                2. Add Employees Page
-            </div>
-            <div>
-                3. Backend needs features for login and reimbursement calculation
-            </div>
-            <div>
-                4. Find a way to use other values aside from IDs to identify events, requests, and reimbursements
-            </div>
-            <div>
-                5. Make this page look less boring.
-            </div>
+                <div>
+                    <div>
+                        <label for="email"><b>Email</b></label>
+                        <input id="emailLoginInput" type="text" placeholder="Enter Username">
+                    </div>
+                    <div>
+                        <label for="password"><b>Password</b></label>
+                        <input id="pwordLoginInput" type="text" placeholder="Enter Password">
+                    </div>
+                  <div>
+                    <script src="login.js"></script>
+                    <button type="submit" onclick="userLogin()">Login</button>
+                    <button type="submit" onclick="userLogout()">Logout</button>
+                  </div>
+                </div>
         </fieldset>
+        <p id="welcomeMessage"></p>
     </body>
 </html>

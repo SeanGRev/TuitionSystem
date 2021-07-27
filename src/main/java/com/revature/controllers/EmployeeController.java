@@ -10,6 +10,7 @@ import com.revature.models.CommandJson;
 import com.revature.models.Department;
 import com.revature.models.Employee;
 import com.revature.models.EmployeeID;
+import com.revature.models.LoginCredentials;
 import com.revature.services.DepartmentService;
 import com.revature.services.DepartmentServiceImpl;
 import com.revature.services.EmployeeService;
@@ -82,6 +83,19 @@ public class EmployeeController {
 		} else {
 			ctx.result(gson.toJson(deps));
 		}
+	};
+	
+	public Handler employeeLogin = (ctx) -> {
+		LoginCredentials lc = gson.fromJson(ctx.body(), LoginCredentials.class);
+		
+		Employee user = es.getEmployeeByEmail(lc.getEmail());
+		
+		if(user != null) {
+			ctx.result(gson.toJson(user));
+		} else {
+			ctx.status(400);
+		}
+		
 	};
 	
 }

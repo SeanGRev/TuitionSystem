@@ -41,7 +41,7 @@ public class RequestController {
 		if(requests != null) {
 			ctx.result(gson.toJson(requests));
 		} else {
-			ctx.result("[]");
+			ctx.result("{}");
 		}
 	};
 	
@@ -59,7 +59,7 @@ public class RequestController {
 		if(req != null) {
 			ctx.result(gson.toJson(req));
 		} else {
-			ctx.result("[]");
+			ctx.result("{}");
 		}
 	};
 	
@@ -77,7 +77,7 @@ public class RequestController {
 		if(req != null) {
 			ctx.result(gson.toJson(req));
 		} else {
-			ctx.result("[]");
+			ctx.result("{}");
 		}
 	};
 	
@@ -94,7 +94,7 @@ public class RequestController {
 		if(req != null) {
 			ctx.result(gson.toJson(req));
 		} else {
-			ctx.result("[]");
+			ctx.result("{}");
 		}
 	};
 	
@@ -116,6 +116,20 @@ public class RequestController {
 		} else {
 			ctx.status(400);
 		}
+	};
+	
+	public Handler updateRequest = (ctx) -> {
+		RequestID reid = gson.fromJson(ctx.body(), RequestID.class);
+		
+		Reimbursement reimbursement = res.getReimbursement(reid.getReimbursement_id());
+		Employee reviewer = es.getEmployeeByEmail(reid.getReviewer_email());
+		Employee sender = es.getEmployeeByEmail(reid.getSender_email());
+		
+		Request req = new Request(reid.getId(), reid.getMessage(), reimbursement, reviewer, sender,
+				reid.isApproval_status(), LocalDate.parse(reid.getSubmission_date()), reid.isUrgent());
+		
+		req = rs.updateRequest(req);
+		ctx.result((req != null) ? gson.toJson(req) : "{}");
 	};
 	
 }

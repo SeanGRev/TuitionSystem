@@ -1,5 +1,6 @@
-function getRequestData(){
-    
+var reqJson;
+
+function viewSent(){
     let xhttp = new XMLHttpRequest();
 
     xhttp.onreadystatechange = function () {
@@ -10,33 +11,105 @@ function getRequestData(){
             console.log("Successful Call");
 
             console.log(this.responseText);
+            let reqJson = JSON.parse(this.responseText);
+            console.log(reqJson);
 
-            let requestJson = JSON.parse(this.responseText);
+            document.getElementById("reqID_1").innerHTML = reqJson[0].id;
+            document.getElementById("amount_1").innerHTML = reqJson[0].reimbursement.amount;
+            document.getElementById("revEmail_1").innerHTML = reqJson[0].reviewer.email;
+            document.getElementById("subDate_1").innerHTML = reqJson[0].submission_date.month + "/"
+                + reqJson[0].submission_date.day + "/" + reqJson[0].submission_date.year;
+            document.getElementById("urg_1").innerHTML = reqJson[0].urgent;
+            document.getElementById("status_1").innerHTML = reqJson[0].approval_status;
 
-            console.log(requestJson);
-            console.log(requestJson.message);
-            console.log(requestJson.reimbursement.amount);
-            console.log(requestJson.reviewer.first_name + " " + requestJson.reviewer.last_name);
-            console.log(requestJson.sender.first_name + " " + requestJson.sender.last_name);
-
-            document.getElementById("requestid").innerHTML = requestJson.id;
-            document.getElementById("reviewer").innerHTML = requestJson.reviewer.first_name + " " + requestJson.reviewer.last_name;
-            document.getElementById("sender").innerHTML = requestJson.sender.first_name + " " + requestJson.sender.last_name;
-            document.getElementById("amount").innerHTML = requestJson.reimbursement.amount;
-            document.getElementById("message").innerHTML = requestJson.message;
-            
         }
     }
 
-    let requestId = document.getElementById("RequestIdInput").value;
-
-    let url = `http://localhost:7000/requests/` + requestId;
+    empID = localStorage.getItem("eid");
+    let url = "http://localhost:7000/employees/" + empID + "/sents";
 
     //step 3
     xhttp.open("GET", url, true);
 
     //step 4
     xhttp.send();
+}
+
+function viewReview(){
+    let xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function () {
+        console.log("Current Ready State: " + this.readyState);
+
+        if (this.readyState == 4 && this.status == 200) {
+            //We have a successful and completed request and can now process the response.
+            console.log("Successful Call");
+
+            console.log(this.responseText);
+            reqJson = JSON.parse(this.responseText);
+            console.log(reqJson);
+
+            document.getElementById("reqID_1").innerHTML = reqJson[0].id;
+            document.getElementById("amount_1").innerHTML = reqJson[0].reimbursement.amount;
+            document.getElementById("revEmail_1").innerHTML = reqJson[0].reviewer.email;
+            document.getElementById("subDate_1").innerHTML = reqJson[0].submission_date.month + "/"
+                + reqJson[0].submission_date.day + "/" + reqJson[0].submission_date.year;
+            document.getElementById("urg_1").innerHTML = reqJson[0].urgent;
+            document.getElementById("status_1").innerHTML = reqJson[0].approval_status;
+        }
+    }
+
+    empID = localStorage.getItem("eid");
+    let url = "http://localhost:7000/employees/" + empID + "/reviews";
+
+    //step 3
+    xhttp.open("GET", url, true);
+
+    //step 4
+    xhttp.send();
+}
+
+function verify(){
+    if(localStorage.getItem("email") === document.getElementById("revEmail_1").innerHTML){
+        approveReq();
+    } else {
+        alert("Not Permitted")
+    }
+}
+
+function approveReq(){
+    alert("Approve Request " + document.getElementById("reqID_1").innerHTML);
+    console.log(reqJson[0]);
+
+    let xhttp = new XMLHttpRequest();
+    let url = `http://localhost:7000/requests/`;
+    xhttp.open("PUT", url, true);
+
+    xhttp.setRequestHeader("Content-Type", "application/json");
+
+    xhttp.onreadystatechange = function () {
+        if (xhttp.readyState === 4 && xhttp.status === 200) {
+
+            console.log("Successful Call");
+
+        }
+    };
+
+    var updatedRequest = {
+        "id" : reqJson[0].id,
+        "message" : reqJson[0].message,
+        "reimbursement_id" : reqJson[0].reimbursement.id,
+        "reviewer_email" : reqJson[0].reviewer.email,
+        "sender_email" : reqJson[0].sender.email,
+        "approval_status" : true,
+        "submission_date" : reqJson[0].submission_date.year +"-" + 
+            +"0" +reqJson[0].submission_date.month + "-" + reqJson[0].submission_date.day,
+        "urgent" : false
+    }
+    console.log(updatedRequest);
+    updatedRequest = JSON.stringify(updatedRequest);
+    xhttp.send(updatedRequest);
+    console.log("Success!");
 }
 
 function postRequest(){

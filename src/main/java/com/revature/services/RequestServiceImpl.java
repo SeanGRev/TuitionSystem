@@ -52,7 +52,10 @@ public class RequestServiceImpl implements RequestService{
 	public Request addRequest(Request req) {
 		return rdao.addRequest(req);
 	}
-	
-	
+
+	@Override
+	public Request updateRequest(Request req) {
+		return rdao.updateRequest(req);
+	}
 	
 }

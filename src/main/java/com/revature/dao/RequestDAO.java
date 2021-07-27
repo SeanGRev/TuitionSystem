@@ -12,4 +12,6 @@ public interface RequestDAO {
 	
 	public Request addRequest(Request req);
 	
+	public Request updateRequest(Request req);
+	
 }

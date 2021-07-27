@@ -16,4 +16,5 @@ public interface RequestService {
 	
 	public Request addRequest(Request req);
 	
+	public Request updateRequest(Request req);
 }

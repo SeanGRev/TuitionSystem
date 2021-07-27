@@ -5,6 +5,7 @@ import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import com.revature.models.Request;
 import com.revature.util.HibernateUtil;
@@ -56,6 +57,26 @@ public class RequestDAOImpl implements RequestDAO{
 			e.printStackTrace();
 			sess.getTransaction().rollback();
 			req = null;
+		} finally {
+			sess.close();
+		}
+		
+		return req;
+	}
+
+	@Override
+	public Request updateRequest(Request req) {
+		Session sess = HibernateUtil.getSession();
+		Transaction tx = null;
+		
+		try {
+			tx = sess.beginTransaction();
+			sess.update(req);
+			tx.commit();
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			tx.rollback();
+			return null;
 		} finally {
 			sess.close();
 		}

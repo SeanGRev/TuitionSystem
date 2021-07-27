@@ -44,11 +44,15 @@ public class App {
 		app.get("/employees/:id", ec.getEmployeeById);
 		app.get("/employees/:id/sents", rc.getEmployeeSentRequests);
 		app.get("/employees/:id/reviews", rc.getEmplyeeReviewRequests);
+		app.post("/login", ec.employeeLogin);
 		app.post("/employees", ec.addEmployee);
 		
 		app.get("/requests", rc.getAllRequests);
 		app.get("/requests/:id", rc.getRequestById);
 		app.post("/requests", rc.addRequest);
+		app.put("/requests/", rc.updateRequest);
+		
+		
 		app.get("/reimbursements", rec.getAllReimbursements);
 		app.get("/reimbursements/:id", rec.getReimbursementById);
 		app.get("/reimbursements/:id/presentations", rec.getReimbursementPresentations);

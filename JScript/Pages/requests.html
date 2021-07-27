@@ -12,7 +12,6 @@
         <style>
             fieldset {
                 background-color: #eeeeee;
-                width: 75%;
                 border: solid black;
               }
               
@@ -79,35 +78,35 @@
                 <a id = "eventPageLink" href = "events.html"> Go to the Events Page</a>
             </span>
         </div>
-        
+        <script src = '../requests.js'></script>
         <h1> Requests Page </h1>
         <fieldset>
-            <legend> Get a Request </legend>
-            <div class="input-group mb-3">
-                <input id = "RequestIdInput" type="number" class="form-control" placeholder="Request ID" aria-label="RequestID" aria-describedby="basic-addon1">
-            </div>
-
-            <script src = "../requests.js"></script>
-            <button id = "getRequestButton" style="text-align:center;" onclick="getRequestData()">Get Data</button>
-            
+            <legend> View Requests </legend>
+            <button id="viewSentReqButton" style="text-align:center;" onclick="viewSent()"> View Sent Requests</button>
+            <button id="viewReviewReqButton" style="text-align:center;" onclick="viewReview()">View Reviewable Requests</button>
+            <!-- Table -->
             <table class="table table-light table-striped">
                 <thead>
-                <tr>
+                  <tr>
                     <th scope="col">Request ID</th>
-                    <th scope="col">Reviewer</th>
-                    <th scope="col">Sender</th>
                     <th scope="col">Amount</th>
-                    <th scope="col">Message</th>
-                </tr>
+                    <th scope="col">Reviewer Email</th>
+                    <th scope="col">Submission Date</th>
+                    <th scope="col">Urgent</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Approve</th>
+                  </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td id="requestid"></th>
-                    <td id="reviewer"></td>
-                    <td id="sender"></td>
-                    <td id="amount"></td>
-                    <td id="message"></td>
-                </tr>
+                  <tr>
+                    <td id="reqID_1"></th>
+                    <td id="amount_1"></td>
+                    <td id="revEmail_1"></td>
+                    <td id="subDate_1"></td>
+                    <td id="urg_1"></td>
+                    <td id="status_1"></td>
+                    <td><button id="approveButton_1" onclick="verify()">Approve</button></td>
+                  </tr>
                 </tbody>
             </table>
         </fieldset>

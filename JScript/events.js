@@ -10,11 +10,9 @@ function getEventData() {
             console.log("Successful Call");
 
             console.log(this.responseText);
-
             let eventJson = JSON.parse(this.responseText);
 
             console.log(eventJson);
-
             //Inputting data into table
             document.getElementById("eventid").innerHTML = eventJson.id;
             document.getElementById("event_type").innerHTML = eventJson.event_type.type;

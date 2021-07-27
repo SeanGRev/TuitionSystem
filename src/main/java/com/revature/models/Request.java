@@ -2,6 +2,7 @@ package com.revature.models;
 
 import java.time.LocalDate;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,13 +23,13 @@ public class Request {
 	
 	@Column(name="message", nullable=false)
 	private String message;
-	@OneToOne
+	@OneToOne(cascade = {CascadeType.ALL})
 	@JoinColumn(name = "reimbursement_id")
 	private Reimbursement reimbursement;
-	@OneToOne
+	@OneToOne(cascade = {CascadeType.ALL})
 	@JoinColumn(name = "reviewer_id")
 	private Employee reviewer;
-	@OneToOne
+	@OneToOne(cascade = {CascadeType.ALL})
 	@JoinColumn(name = "sender_id")
 	private Employee sender;
 	@Column(name="approval_status", nullable=true)
