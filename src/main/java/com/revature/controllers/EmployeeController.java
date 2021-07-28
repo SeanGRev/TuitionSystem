@@ -91,7 +91,11 @@ public class EmployeeController {
 		Employee user = es.getEmployeeByEmail(lc.getEmail());
 		
 		if(user != null) {
-			ctx.result(gson.toJson(user));
+			if(user.getPassword().equals(lc.getPassword())) {
+				ctx.result(gson.toJson(user));
+			} else {
+				ctx.status(400);
+			}
 		} else {
 			ctx.status(400);
 		}
