@@ -29,6 +29,9 @@ function userLogin() {
             console.log(localStorage.getItem("eid"));
             document.getElementById("welcomeMessage").innerHTML = "Welcome " + localStorage.getItem("empName");
         }
+        else if(xhttp.status === 400){
+            document.getElementById("welcomeMessage").innerHTML = "* Incorrect username or password. Please try again. *";
+        }
     };
 
     var loginInfo = {

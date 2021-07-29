@@ -14,6 +14,11 @@ function viewSent(){
                 console.log("Successful Call");
 
                 console.log(this.responseText);
+
+                if(this.responseText === "[]"){
+                    alert("No results found");
+                }
+
                 let reqJson = JSON.parse(this.responseText);
                 console.log(reqJson);
 
@@ -22,6 +27,8 @@ function viewSent(){
                 document.getElementById("revEmail_1").innerHTML = reqJson[0].reviewer.email;
                 document.getElementById("subDate_1").innerHTML = reqJson[0].submission_date.month + "/"
                     + reqJson[0].submission_date.day + "/" + reqJson[0].submission_date.year;
+                document.getElementById("eventType_1").innerHTML = reqJson[0].reimbursement.event.event_type.type;
+                document.getElementById("grade_1").innerHTML = reqJson[0].reimbursement.grade;
                 document.getElementById("urg_1").innerHTML = reqJson[0].urgent;
                 document.getElementById("status_1").innerHTML = reqJson[0].approval_status;
                 
@@ -31,6 +38,8 @@ function viewSent(){
                     document.getElementById("revEmail_2").innerHTML = reqJson[1].reviewer.email;
                     document.getElementById("subDate_2").innerHTML = reqJson[1].submission_date.month + "/"
                         + reqJson[1].submission_date.day + "/" + reqJson[1].submission_date.year;
+                    document.getElementById("eventType_2").innerHTML = reqJson[0].reimbursement.event.event_type.type;
+                    document.getElementById("grade_2").innerHTML = reqJson[0].reimbursement.grade;
                     document.getElementById("urg_2").innerHTML = reqJson[1].urgent;
                     document.getElementById("status_2").innerHTML = reqJson[1].approval_status;
                 }
@@ -63,6 +72,11 @@ function viewReview(){
                 console.log("Successful Call");
 
                 console.log(this.responseText);
+
+                if(this.responseText === "[]"){
+                    alert("No results found");
+                }
+
                 reqJson = JSON.parse(this.responseText);
                 console.log(reqJson);
 
@@ -71,6 +85,8 @@ function viewReview(){
                 document.getElementById("revEmail_1").innerHTML = reqJson[0].reviewer.email;
                 document.getElementById("subDate_1").innerHTML = reqJson[0].submission_date.month + "/"
                     + reqJson[0].submission_date.day + "/" + reqJson[0].submission_date.year;
+                document.getElementById("eventType_1").innerHTML = reqJson[0].reimbursement.event.event_type.type;
+                document.getElementById("grade_1").innerHTML = reqJson[0].reimbursement.grade;
                 document.getElementById("urg_1").innerHTML = reqJson[0].urgent;
                 document.getElementById("status_1").innerHTML = reqJson[0].approval_status;
 
@@ -80,6 +96,8 @@ function viewReview(){
                     document.getElementById("revEmail_2").innerHTML = reqJson[1].reviewer.email;
                     document.getElementById("subDate_2").innerHTML = reqJson[1].submission_date.month + "/"
                         + reqJson[1].submission_date.day + "/" + reqJson[1].submission_date.year;
+                    document.getElementById("eventType_2").innerHTML = reqJson[0].reimbursement.event.event_type.type;
+                    document.getElementById("grade_2").innerHTML = reqJson[0].reimbursement.grade;
                     document.getElementById("urg_2").innerHTML = reqJson[1].urgent;
                     document.getElementById("status_2").innerHTML = reqJson[1].approval_status;
                 }
