@@ -31,7 +31,7 @@ To-do list:
    
 1. Start with this GitHub Repository.
 2. Git Clone to a directory of your choice
-   $ git clone https://github.com/libgit2/libgit2 mylibgit
+   $ git clone https://github.com/SeanGRev/TuitionSystem myTuitionSystem
 3. If there is not currently a src/main/resources directory create it either manually or using the command line
   a. In this folder create a file called 'hibernate.cfg.xml'
   b. The file contents should look like the code below:
