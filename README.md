@@ -114,7 +114,10 @@ To-do list:
         supervisor_id int not null,
         ben_co_id int not null,
         dep_id int not null,
-        primary key (id)
+        primary key (id),
+        CONSTRAINT fk_emp_dep
+          FOREIGN KEY(dep_id) 
+            REFERENCES departments(id)
       );
 
       create table departments (
@@ -133,7 +136,16 @@ To-do list:
         approval_status boolean not null,
         submission_date date not null,
         urgent boolean not null,
-        primary key (id)
+        primary key (id),
+        CONSTRAINT req_reimbursement_fk
+          FOREIGN KEY(reimbursement_id) 
+            REFERENCES reimbursements(id),
+        CONSTRAINT req_reviewer_fk
+          FOREIGN KEY(reviewer_id) 
+            REFERENCES employees(id),
+        CONSTRAINT req_sender_fk
+          FOREIGN KEY(sender_id) 
+            REFERENCES employees(id)
       );
 
       create table reimbursements (
@@ -144,7 +156,13 @@ To-do list:
         missed_hours int not null,
         description varchar(200) not null,
         grade varchar(20) not null,
-        primary key (id)
+        primary key (id),
+        CONSTRAINT rbm_employee_fk
+          FOREIGN KEY(employee_id) 
+            REFERENCES employees(id),
+        CONSTRAINT rbm_event_id
+          FOREIGN KEY(event_id) 
+            REFERENCES events(id)
       );
 
       create table events (
@@ -156,7 +174,13 @@ To-do list:
         tuition numeric(10,2) not null,
         location varchar(50) not null,
         description varchar(300) not null,
-        primary key (id)
+        primary key (id),
+        CONSTRAINT event_type_fk
+          FOREIGN KEY(event_type_id) 
+            REFERENCES event_types(id),
+        CONSTRAINT grade_format_id
+          FOREIGN KEY(grade_format_id) 
+            REFERENCES grade_formats(id)
       );
 
       create table event_types (
@@ -176,25 +200,31 @@ To-do list:
         id serial,
         reimbursement_id int not null,
         description varchar(200) not null,
-        primary key (id)
+        primary key (id),
+        CONSTRAINT presentation_fk
+          FOREIGN KEY(reimbursement_id) 
+            REFERENCES reimbursements(id)
       );
 
       create table attachments (
         id serial,
         reimbursement_id int not null,
         attachment varchar(50) not null,
-        primary key (id)
+        primary key (id),
+        CONSTRAINT attachment_fk
+          FOREIGN KEY(reimbursement_id) 
+            REFERENCES reimbursements(id)
       );
      ```
 
-2. Now set up some foreign key relationships.
-  a. Employees should have a foreign key relation between dep_id and the primary key in the departments table
-     Foreign Key Creation Syntax:
-       
-       CONSTRAINT fk_emp_dep
-          FOREIGN KEY(dep_id) 
-            REFERENCES departments(id)
-  b. 
+2. This should set up the database after you run the script. Test to make sure the foreign keys are there, if not you may have to create them manually through a application      like DBeaver or MySQLWorkbench.
+
+### Testing the backend
+
+At this point the backend should be operational if all the prior instructions were correct and everything worked out okay.
+To make sure the basics work run the file TuitionSystem\src\main\java\com\revature\app\App.java. If everything works the console should look something like this:
+![image](https://user-images.githubusercontent.com/85519524/127674155-e8408357-07fd-4c23-9725-16431cb71364.png)
+
 
 ## Usage
 
