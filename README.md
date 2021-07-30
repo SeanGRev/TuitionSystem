@@ -245,7 +245,7 @@ Navigate to TuitionSystem\JScript and open the index.html file. This should brin
 
 ## Usage
 If the homepage is open try logging in as one of your users in the database.
-Enter the email and password for one of the employees you have created. If correct your should see a message below the login section that greets them by name.
+Enter the email and password for one of the employees you have created. If correct you should see a message below the login section that greets them by name.
 ![image](https://user-images.githubusercontent.com/85519524/127675799-706edc30-e424-4339-8ac1-abcab42a79ea.png)
 
 If the login credentials were incorrect you should see a message like this:
@@ -255,7 +255,7 @@ Now to start the process of sending a request you will first have to go to the e
 This should take you to a page like this:
 ![image](https://user-images.githubusercontent.com/85519524/127676489-ebcf3aa6-095c-4842-8d36-27963f5cd7e1.png)
 
-To enter a date scroll down to the Create a New Event form below. Fill out the data. Just remember that the first date is the start date of the event and the second date is the end date.
+To enter an event scroll down to the Create a New Event form below. Fill out the data. Just remember that the first date is the start date of the event and the second date is the end date.
 
 ![image](https://user-images.githubusercontent.com/85519524/127676732-353862cd-ff3e-4e44-8290-c8c0840d4603.png)
 
