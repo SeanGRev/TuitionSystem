@@ -103,7 +103,7 @@ To-do list:
 
 1. To set up the database navigate to where you run your database scripts and run the following:
    This should work fine with Postgresql and SQL, other database scripts may have different syntax.
-
+   ```
       create table employees (
         id serial,
         first_name varchar(20) not null,
@@ -185,6 +185,7 @@ To-do list:
         attachment varchar(50) not null,
         primary key (id)
       );
+     ```
 
 2. Now set up some foreign key relationships.
   a. Employees should have a foreign key relation between dep_id and the primary key in the departments table
